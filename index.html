@@ -608,7 +608,7 @@ html.theming body,html.theming body *:not(.cur):not(.sel){transition:background-
 <!-- ================= BUILD HUD ================= -->
 <div class="hud" id="hud" role="status" aria-live="off">
   <div class="av" id="hAv" aria-hidden="true"></div>
-  <span class="live agents-txt"><b id="hN">24</b> agents</span>
+  <span class="live agents-txt"><b id="hN">12</b> agents</span>
   <span class="live lay"><b id="hL">0</b> / <span id="hT">0</span> layers</span>
   <span class="hud-done" id="hDone"></span>
   <div class="bar" aria-hidden="true"><i id="hBar"></i></div>
@@ -686,7 +686,7 @@ $('#copy').addEventListener('click', async () => {
 const COLORS = ['#FF5A5F','#7B61FF','#1ABCFE','#0ACF83','#FFC700','#FF7262','#A259FF','#00C2FF','#6DD58C','#F5A3FF','#FFB547','#4DD0E1',
                 '#FF8A65','#B388FF','#64FFDA','#FFD54F','#F06292','#81C784','#90CAF9','#FFAB91','#CE93D8','#80DEEA','#E6EE9C','#FFCC80'];
 const small = innerWidth < 820;
-const N = small ? 10 : 24;
+const N = small ? 6 : 12;   // number of agent cursors (phones / larger screens)
 const stage = $('#stage'), hud = $('#hud');
 const els = $$('[data-b]');
 const B = {speed:1, tour:true, gen:0, built:0, total:els.length, t0:0, done:false, active:0, expY:null, front:null, frontT:0, running:false};
@@ -898,7 +898,7 @@ function tick(t){
 function fadeCursors(){ agents.forEach(a => a.el.style.opacity = 0); }
 function swarm(){
   const g = B.gen;
-  const cx = small ? innerWidth * .5 : innerWidth * .83, cy = scrollY + innerHeight * (small ? .32 : .5), R = small ? 56 : 84;
+  const cx = small ? innerWidth * .5 : innerWidth * .83, cy = scrollY + innerHeight * (small ? .32 : .5), R = small ? 44 : 66;
   agents.forEach((a, i) => { const ang = i / N * Math.PI * 2; a.set(cx + Math.cos(ang) * R, cy + Math.sin(ang) * R, 900); });
   setTimeout(() => {
     if (g !== B.gen) return;
